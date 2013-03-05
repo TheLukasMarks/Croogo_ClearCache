@@ -6,7 +6,7 @@
      *
      * @category ClearCache.Controller
      * @package  Croogo.ClearCache
-     * @version  1.4
+     * @version  1.4, 1.5
      * @author   Lukas Marks <info@lumax-web.de>
      * @link     https://www.lumax-web.de
      */
