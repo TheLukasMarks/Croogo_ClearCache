@@ -33,6 +33,12 @@
                     $this->delete($path . $dirItem . DS);
                 } elseif (substr($dirItem, 0, 5) == 'cake_') {
                     unlink($path . $dirItem);
+                } elseif (substr($dirItem, 0, 6) == 'nodes_') {
+                    unlink($path . $dirItem);
+                } elseif (substr($dirItem, 0, 7) == 'croogo_') {
+                    unlink($path . $dirItem);
+                } elseif (substr($dirItem, 0, 12) == 'permissions_') {
+                    unlink($path . $dirItem);
                 }
             }
         }
