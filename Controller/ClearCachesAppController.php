@@ -1,15 +1,15 @@
 <?php
-    /**
-     * ClearCache
-     *
-     * PHP version 5
-     *
-     * @category ClearCache.Controller
-     * @package  Croogo.ClearCache
-     * @version  1.4, 1.5
-     * @author   Lukas Marks <info@lumax-web.de>
-     * @link     https://www.lumax-web.de
-     */
-    class ClearCachesAppController extends AppController {
+/**
+ * ClearCache
+ *
+ * @category Controller
+ * @package  ClearCache
+ * @version  2.x
+ * @author   Lukas Marks <info@lumax-web.de>
+ * @link     http://www.lumax-web.de/
+ */
+App::uses('AppController', 'Controller');
 
-    }
+class ClearCachesAppController extends AppController {
+
+}

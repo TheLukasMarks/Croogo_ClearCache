@@ -1,0 +1,10 @@
+# German translation of ClearCache Plugin
+#
+msgid ""
+msgstr ""
+
+msgid "Clear Cache"
+msgstr "Clear cache"
+
+msgid "Cache has been cleared successfully."
+msgstr "Cache has been cleared successfully."
