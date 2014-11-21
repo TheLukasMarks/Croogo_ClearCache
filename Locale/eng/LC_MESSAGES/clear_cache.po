@@ -1,4 +1,4 @@
-# German translation of ClearCache Plugin
+# English translation of ClearCache Plugin
 #
 msgid ""
 msgstr ""
