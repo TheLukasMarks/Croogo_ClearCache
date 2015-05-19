@@ -11,14 +11,31 @@
  * @since         0.1
  * @license       http://www.opensource.org/licenses/mit-license.php MIT License
  */
-
 App::uses('ClearCachesAppController', 'ClearCache.Controller');
 
 class ClearCachesController extends ClearCachesAppController {
-    public $uses = array('ClearCache.ClearCache');
-    public function admin_clear() {
-        $this->ClearCache->delete();
-        $this->Session->setFlash(__d('clear_cache', 'Cache has been cleared successfully.'), 'flash', array('class' => 'success'));
-        return $this->redirect(Configure::read('Croogo.dashboardUrl'));
-    }
+	
+	/**
+	 * Models used by the Controller
+	 *
+	 * @var array
+	 * @access public
+	 */ 
+	public $uses = array('ClearCache.ClearCache');
+	
+	/**
+	 * Admin clear
+	 *
+	 * @return void
+	 * @access public
+	 */
+	public function admin_clear() {
+		if ($this->{$this->modelClass}->delete()) {
+			$this->Session->setFlash(__d('clear_cache', 'Cache has been cleared successfully.'), 'flash', array('class' => 'success'));
+			return $this->redirect(Configure::read('Croogo.dashboardUrl'));
+		}
+		
+		$this->Session->setFlash(__d('clear_cache', 'An error occurred. Please, try again.'), 'flash', array('class' => 'error'));
+		return $this->redirect(Configure::read('Croogo.dashboardUrl'));
+	}
 }

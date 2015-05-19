@@ -15,40 +15,57 @@ App::uses('ClearCacheAppModel', 'ClearCache.Model');
 
 class ClearCache extends ClearCacheAppModel {
 
-    public $name = 'ClearCache';
+	/**
+	 * Model name
+	 *
+	 * @var string
+	 * @access public
+	 */
+	public $name = 'ClearCache';
     
-    public $useTable = false;
+	/**
+	 * Model table
+	 *
+	 * @var string
+	 * @access public
+	 */
+	public $useTable = false;
 
-    public function delete($path = null, $recursive = true) {
+	/**
+	 * Removes record for given ID. If no ID is given, the current ID is used. Returns true on success.
+	 *
+	 * @param int|string $id ID of record to delete
+	 * @param bool $cascade Set to true to delete records that depend on this record
+	 * @return bool True on success
+	 * @triggers Model.beforeDelete $this, array($cascade)
+	 * @triggers Model.afterDelete $this
+	 * @link http://book.cakephp.org/2.0/en/models/deleting-data.html
+	 */
+	public function delete($id = null, $cascade = true) {
 
-        if (!$path) { $path = TMP . 'cache' . DS; }
-
-        $dirItems = scandir($path);
-        $ignore = array('.', '..');
-
-        foreach ($dirItems AS $dirItem) {
-
-            if (in_array($dirItem, $ignore)) continue;
-
-            if (is_dir($path . $dirItem) && $recursive) {
-                $this->delete($path . $dirItem . DS);
-            } elseif (substr($dirItem, 0, 5) == 'cake_') {
-                unlink($path . $dirItem);
-            } elseif (substr($dirItem, 0, 7) == 'croogo_') {
-                unlink($path . $dirItem);
-            } elseif (substr($dirItem, 0, 5) == 'type_') {
-                unlink($path . $dirItem);
-            } elseif (substr($dirItem, 0, 5) == 'types_') {
-                unlink($path . $dirItem);
-            } elseif (substr($dirItem, 0, 5) == 'node_') {
-                unlink($path . $dirItem);
-            } elseif (substr($dirItem, 0, 6) == 'nodes_') {
-                unlink($path . $dirItem);
-            } elseif (substr($dirItem, 0, 11) == 'permission_') {
-                unlink($path . $dirItem);
-            } elseif (substr($dirItem, 0, 12) == 'permissions_') {
-                unlink($path . $dirItem);
-            }
-        }
-    }
+		/**
+		 * Returns an array containing the currently configured Cache settings.
+		 *
+		 * @return array Array of configured Cache config names.
+		 */
+		$cacheConfigNames = Cache::configured();
+		
+		foreach ($cacheConfigNames as $name) {
+			
+			/**
+			 * Delete all keys from the cache.
+			 *
+			 * @param boolean $check if true will check expiration, otherwise delete all
+			 * @param string $config name of the configuration to use. Defaults to 'default'
+			 * @return boolean True if the cache was successfully cleared, false otherwise
+			 */
+			if (Cache::clear(false, $name)) {
+				continue;
+			} else {
+				return false;
+			}
+		}
+		
+		return true;
+	}
 }
