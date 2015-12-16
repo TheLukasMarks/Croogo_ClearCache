@@ -13,6 +13,7 @@
  */
 App::uses('AppModel', 'Model');
 
-class ClearCacheAppModel extends AppModel {
+class ClearCacheAppModel extends AppModel
+{
 
 }

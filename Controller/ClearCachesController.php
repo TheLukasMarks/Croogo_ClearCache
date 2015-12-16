@@ -13,7 +13,8 @@
  */
 App::uses('ClearCachesAppController', 'ClearCache.Controller');
 
-class ClearCachesController extends ClearCachesAppController {
+class ClearCachesController extends ClearCachesAppController
+{
 	
 	/**
 	 * Models used by the Controller
@@ -21,7 +22,7 @@ class ClearCachesController extends ClearCachesAppController {
 	 * @var array
 	 * @access public
 	 */ 
-	public $uses = array('ClearCache.ClearCache');
+	public $uses = ['ClearCache.ClearCache'];
 	
 	/**
 	 * Admin clear
@@ -29,13 +30,14 @@ class ClearCachesController extends ClearCachesAppController {
 	 * @return void
 	 * @access public
 	 */
-	public function admin_clear() {
+	public function admin_clear()
+	{
 		if ($this->{$this->modelClass}->delete()) {
-			$this->Session->setFlash(__d('clear_cache', 'Cache has been cleared successfully.'), 'flash', array('class' => 'success'));
+			$this->Session->setFlash(__d('clear_cache', 'Cache has been cleared successfully.'), 'flash', ['class' => 'success']);
 			return $this->redirect(Configure::read('Croogo.dashboardUrl'));
 		}
 		
-		$this->Session->setFlash(__d('clear_cache', 'An error occurred. Please, try again.'), 'flash', array('class' => 'error'));
+		$this->Session->setFlash(__d('clear_cache', 'An error occurred. Please, try again.'), 'flash', ['class' => 'error']);
 		return $this->redirect(Configure::read('Croogo.dashboardUrl'));
 	}
 }

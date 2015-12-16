@@ -15,16 +15,15 @@
 /**
  * Admin menu (navigation)
  */
-CroogoNav::add('settings.children.clear_cache', array(
+CroogoNav::add('settings.children.clear_cache', [
 	'icon' => 'trash',
 	'title' => __d('clear_cache', 'Clear Cache'),
-	'url' => array(
+	'url' => [
 		'admin' => true,
 		'plugin' => 'clear_cache',
 		'controller' => 'clear_caches',
 		'action' => 'clear',
-	),
+	],
 	'weight' => 100,
-	'children' => array(
-	),
-));
+	'children' => [],
+]);

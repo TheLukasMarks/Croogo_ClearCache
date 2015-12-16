@@ -13,6 +13,7 @@
  */
 App::uses('AppController', 'Controller');
 
-class ClearCachesAppController extends AppController {
+class ClearCachesAppController extends AppController
+{
 
 }

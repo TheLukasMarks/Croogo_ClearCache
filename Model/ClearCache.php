@@ -13,7 +13,8 @@
  */
 App::uses('ClearCacheAppModel', 'ClearCache.Model');
 
-class ClearCache extends ClearCacheAppModel {
+class ClearCache extends ClearCacheAppModel
+{
 
 	/**
 	 * Model name
@@ -41,7 +42,8 @@ class ClearCache extends ClearCacheAppModel {
 	 * @triggers Model.afterDelete $this
 	 * @link http://book.cakephp.org/2.0/en/models/deleting-data.html
 	 */
-	public function delete($id = null, $cascade = true) {
+	public function delete($id = null, $cascade = true)
+	{
 
 		/**
 		 * Returns an array containing the currently configured Cache settings.
